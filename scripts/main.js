@@ -233,11 +233,12 @@ document.addEventListener('DOMContentLoaded', () => {
             UI.setLoading(loadingMsg, false);
         }
 
-        handleSubmitSolution(answer = null) {
-            const solutionText = answer || UI.solutionInput.value;
-            if (!solutionText || !this.currentChallenge) return;
+        handleSubmitSolution(value) {
+            // If value is not provided, get from textarea
+            const answer = value !== undefined ? value : document.getElementById('solution-input').value.trim();
+            if (!answer || !this.currentChallenge) return;
 
-            const isCorrect = this.challengeManager.validateSolution(this.currentChallenge, solutionText, this.isBossActive ? this.currentBossStage : -1);
+            const isCorrect = this.challengeManager.validateSolution(this.currentChallenge, answer, this.isBossActive ? this.currentBossStage : -1);
 
             if (isCorrect) {
                 if (this.isBossActive) {

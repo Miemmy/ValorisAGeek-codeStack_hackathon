@@ -383,3 +383,27 @@ h1, h2, h3, h4, #loading-logo, .stat-item span { text-shadow: 0 0 8px var(--acce
     opacity: 0;
     pointer-events: none;
 }
+#profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+.profile-item {
+    background: var(--bg-color);
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 3px solid var(--accent-color);
+}
+.profile-item h3 {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--accent-alt);
+}
+.profile-item p {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--text-color);
+}

@@ -221,24 +221,11 @@ export const UI = {
     },
 
     renderProfile(state) {
-        this.rosterList.innerHTML = '';
-        const fakeOperatives = [
-            { username: 'root', rank: 'masterOfTheStack', favoriteLanguage: 'Python'},
-            { username: 'N0mad', rank: 'architectArcanist', favoriteLanguage: 'JavaScript'},
-            { username: 'Firewall', rank: 'logicWeaver', favoriteLanguage: 'CSS'}
-        ];
-        const playerRosterItem = document.createElement('div');
-        playerRosterItem.className = 'roster-item player';
-        playerRosterItem.innerHTML = `> ${state.username} [${state.rank}] - Prefers: ${state.favoriteLanguage}`;
-        this.rosterList.appendChild(playerRosterItem);
-
-        fakeOperatives.forEach(op => {
-            if (op.username !== state.username) {
-                const opItem = document.createElement('div');
-                opItem.className = 'roster-item';
-                opItem.innerHTML = `> ${op.username} [${op.rank}] - Prefers: ${op.favoriteLanguage}`;
-                this.rosterList.appendChild(opItem);
-            }
-        });
+        document.getElementById('profile-username').textContent = state.username || '-';
+        document.getElementById('profile-level').textContent = state.level || '-';
+        document.getElementById('profile-xp').textContent = `${state.xp} / ${state.xpForNextLevel}`;
+        document.getElementById('profile-xp-next').textContent = `${state.xpForNextLevel - state.xp} XP`;
+        document.getElementById('profile-challenges').textContent = state.stats?.challengesCompleted ?? '-';
+        document.getElementById('profile-hints').textContent = state.stats?.hintsUsed ?? '-';
     }
 };
