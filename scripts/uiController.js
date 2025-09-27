@@ -227,5 +227,28 @@ export const UI = {
         document.getElementById('profile-xp-next').textContent = `${state.xpForNextLevel - state.xp} XP`;
         document.getElementById('profile-challenges').textContent = state.stats?.challengesCompleted ?? '-';
         document.getElementById('profile-hints').textContent = state.stats?.hintsUsed ?? '-';
-    }
+    },
+
+    showDailyChallengeModal(challenge) {
+        const modal = document.getElementById('daily-challenge-modal');
+        document.getElementById('daily-challenge-title').textContent = "Daily Anomaly Detected";
+        document.getElementById('daily-challenge-description').textContent = challenge.description || '';
+        document.getElementById('daily-code-block').textContent = challenge.brokenCode || '';
+        document.getElementById('solution-input').value = '';
+        modal.classList.remove('hidden');
+    },
+
+    hideDailyChallengeModal() {
+        document.getElementById('daily-challenge-modal').classList.add('hidden');
+    },
+
+    showDailyResultsModal(duration) {
+        document.getElementById('daily-results-title').textContent = "Patch Successful";
+        document.getElementById('daily-results-time').textContent = `Patched in ${duration} seconds!`;
+        document.getElementById('daily-results-modal').classList.remove('hidden');
+    },
+
+    hideDailyResultsModal() {
+        document.getElementById('daily-results-modal').classList.add('hidden');
+    },
 };
