@@ -3,9 +3,6 @@ import { UI } from './uiController.js';
 import { ChallengeManager } from './challengeManager.js';
 import { AIManager } from './aiIntegration.js';
 import { AchievementManager } from './achievements.js';
-import { LiveAI } from './liveAI.js';
-
-const USE_LIVE_AI = true;
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -20,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
             this.gameState = new GameState();
             this.challengeManager = new ChallengeManager();
             this.aiManager = new AIManager();
-            this.liveAI = new LiveAI();
             this.achievementManager = new AchievementManager();
             this.currentChallenge = null;
             this.isBossActive = false;
@@ -131,6 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById(`${tab}-content`).classList.add('active');
                 });
             });
+
+            document.getElementById('ask-ai-button').addEventListener('click', () => {
+                if (this.currentDailyChallenge) {
+                    this.handleDailyAIPrompt();
+                } else {
+                    this.handleAIPrompt();
+                }
+            });
         }
         
         handleSaveProfile() {
@@ -208,15 +212,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const loadingMsg = UI.addMessage('ai', 'Accessing neural network...', true);
             let hint;
 
-            if (USE_LIVE_AI) {
-                const currentCode = this.isBossActive 
-                    ? this.currentChallenge.stages[this.currentBossStage].brokenCode
-                    : this.currentChallenge.brokenCode;
-                hint = await this.liveAI.getHint(currentCode, promptText);
-            } else {
-                hint = await this.aiManager.getHint(this.currentChallenge.id);
-            }
-            
+            // ONLY use the local AIManager for hints
+            hint = await this.aiManager.getHint(this.currentChallenge.id);
+
+            loadingMsg.textContent = hint;
+            UI.setLoading(loadingMsg, false);
+        }
+
+        async handleDailyAIPrompt() {
+            const promptText = UI.promptInput.value.trim();
+            if (!promptText || !this.currentDailyChallenge) return;
+
+            UI.addMessage('player', promptText);
+            UI.promptInput.value = '';
+
+            const loadingMsg = UI.addMessage('ai', 'Accessing neural network...', true);
+            let hint = await this.aiManager.getHint(this.currentDailyChallenge.id);
+
             loadingMsg.textContent = hint;
             UI.setLoading(loadingMsg, false);
         }

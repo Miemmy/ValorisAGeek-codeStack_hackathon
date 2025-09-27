@@ -57,7 +57,7 @@ export const UI = {
         this.integrityBarFill.style.width = `${integrity}%`;
     },
 
-    renderChallenge(challenge) {
+    renderChallenge(challenge, bossStage = 0) {
         this.challengeTitle.textContent = `[${challenge.moduleKey}] ` + challenge.title;
         this.learningConcept.textContent = challenge.learningConcept;
         this.challengeText.textContent = challenge.description;
@@ -66,16 +66,27 @@ export const UI = {
         this.pillsContainer.style.display = 'none';
         this.solutionInput.parentElement.style.display = 'flex';
 
-        if (challenge.type === 'multiple-choice') {
-            this.solutionInput.parentElement.style.display = 'none';
-            this.pillsContainer.style.display = 'flex';
-            challenge.options.forEach(optionText => {
-                const pill = document.createElement('button');
-                pill.className = 'pill-button';
-                pill.textContent = optionText;
-                pill.dataset.value = optionText;
-                this.pillsContainer.appendChild(pill);
+        // If it's a boss with stages, get the current stage
+        const current = challenge.isBoss && challenge.stages
+            ? challenge.stages[bossStage]
+            : challenge;
+
+        // Pills for multiple-choice
+        const pillsContainer = document.getElementById('pills-container');
+        pillsContainer.innerHTML = '';
+        if (current.options && Array.isArray(current.options)) {
+            pillsContainer.style.display = 'flex';
+            current.options.forEach(option => {
+                const btn = document.createElement('button');
+                btn.className = 'pill-button';
+                btn.textContent = option;
+                btn.dataset.value = option;
+                pillsContainer.appendChild(btn);
             });
+            document.getElementById('solution-input').style.display = 'none';
+        } else {
+            pillsContainer.style.display = 'none';
+            document.getElementById('solution-input').style.display = '';
         }
     },
 

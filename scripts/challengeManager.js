@@ -66,16 +66,19 @@ export class ChallengeManager {
     }
 
     validateSolution(challenge, submittedSolution, bossStage = -1) {
-        let expectedSolution;
+        let expectedSolutions;
         if (bossStage !== -1 && challenge.isBoss) {
-            expectedSolution = challenge.stages[bossStage].solution;
+            expectedSolutions = challenge.stages[bossStage].solution;
         } else {
-            expectedSolution = challenge.solution;
+            expectedSolutions = challenge.solution;
         }
-        
-        const normalizedExpected = this.normalizeStringForComparison(expectedSolution);
+
+        // Support both string and array for backward compatibility
+        const solutionsArray = Array.isArray(expectedSolutions) ? expectedSolutions : [expectedSolutions];
         const normalizedSubmitted = this.normalizeStringForComparison(submittedSolution);
-        
-        return normalizedExpected === normalizedSubmitted;
+
+        return solutionsArray.some(sol => 
+            this.normalizeStringForComparison(sol) === normalizedSubmitted
+        );
     }
 }

@@ -1,2 +1,2 @@
 // Inside scripts/config.js
-export const API_KEY = 'AIzaSyAzj4E9WzGekp_ZHiBdqMz0YVmiEVqYbBY';
+export const API_KEY = 'AIzaSyAIDCAeZrMAv0UfoTMXRBZMyuLa2j-54OE';

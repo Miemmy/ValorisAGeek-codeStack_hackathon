@@ -3,41 +3,234 @@
         "displayName": "Module 1: HTML Architecture",
         "rankUnlocked": "syntaxSorcerer",
         "challenges": [
-            { "id": "html-01", "title": "System Genesis: Root Protocol", "learningConcept": "Concept: Every HTML5 page must begin with <!DOCTYPE html>. This declaration tells the browser to interpret the code using modern web standards.", "description": "Your Task: The document is missing its essential first line. Add the <!DOCTYPE html> declaration to initialize the page correctly.", "brokenCode": "<html>...</html>", "solution": "<!DOCTYPE html>", "xp": 20 },
-            { "id": "html-02", "title": "Data Stream Error: Unclosed Packet", "learningConcept": "Concept: Most HTML elements, like paragraphs (<p>), require both an opening and a closing tag (</p>). This tells the browser where the element's content begins and ends.", "description": "Your Task: The paragraph tag in the code is not closed, which can corrupt the page layout. Provide the full, corrected line with the proper closing tag.", "brokenCode": "<p>This is a paragraph", "solution": "<p>This is a paragraph</p>", "xp": 25 },
-            { "id": "html-03", "title": "Signal Corruption: Image Packet", "learningConcept": "Concept: Image tags (<img>) must have an 'alt' attribute. This provides alternative text for screen readers and displays if the image fails to load.", "description": "Your Task: The image tag is missing its 'alt' attribute. Add the attribute to make the image accessible. The alt text can be 'logo'.", "brokenCode": "<img src='logo.png'>", "solution": "<img src='logo.png' alt='logo'>", "xp": 30 },
-            { "id": "html-boss", "title": "BOSS: The Architect's Gauntlet", "isBoss": true, "xp": 100, "learningConcept": "Concept: A well-structured HTML document uses semantic tags to define its parts (like <header>, <footer>, <li>) and follows strict syntax rules for its elements.", "stages": [
-                { "description": "[STAGE 1/3] Your Task: A link (or 'anchor' tag) is broken. It's missing the 'href' attribute that tells it where to go. Fix the tag so it points to the homepage ('/').", "brokenCode": "<a>Home</a>\n<a href='/about'>About</a>", "solution": "<a href='/'>Home</a>" },
-                { "description": "[STAGE 2/3] Your Task: A list is structured incorrectly. Text inside an unordered list (<ul>) must be wrapped in list item (<li>) tags. Correct the line.", "brokenCode": "<ul>Home</ul>", "solution": "<li>Home</li>" },
-                { "description": "[STAGE 3/3] Your Task: The page's footer is using a generic <div> tag. For better structure and accessibility, it should use the semantic <footer> tag. Replace the div with the correct tag.", "brokenCode": "<div id='footer'>Copyright</div>", "solution": "<footer id='footer'>Copyright</footer>" }
-            ]}
+            {
+                "id": "html-01",
+                "title": "System Genesis: Root Protocol",
+                "learningConcept": "Concept: Every HTML5 page must begin with <!DOCTYPE html>. This declaration tells the browser to interpret the code using modern web standards.",
+                "description": "Your Task: The document is missing its essential first line. Add the <!DOCTYPE html> declaration to initialize the page correctly.",
+                "brokenCode": "<html>...</html>",
+                "solution": [
+                    "<!DOCTYPE html>",
+                    "<!doctype html>",
+                    "<!DOCTYPE html >",
+                    "<!doctype html >"
+                ],
+                "xp": 20
+            },
+            {
+                "id": "html-02",
+                "title": "Data Stream Error: Unclosed Packet",
+                "learningConcept": "Concept: Most HTML elements, like paragraphs (<p>), require both an opening and a closing tag (</p>). This tells the browser where the element's content begins and ends.",
+                "description": "Your Task: The paragraph tag in the code is not closed, which can corrupt the page layout. Provide the full, corrected line with the proper closing tag.",
+                "brokenCode": "<p>This is a paragraph",
+                "solution": [
+                    "<p>This is a paragraph</p>",
+                    "<p>This is a paragraph </p>",
+                    "<p>This is a paragraph </p >"
+                ],
+                "xp": 25
+            },
+            {
+                "id": "html-03",
+                "title": "Signal Corruption: Image Packet",
+                "learningConcept": "Concept: Image tags (<img>) must have an 'alt' attribute. This provides alternative text for screen readers and displays if the image fails to load.",
+                "description": "Your Task: The image tag is missing its 'alt' attribute. Add the attribute to make the image accessible. The alt text can be 'logo'.",
+                "brokenCode": "<img src='logo.png'>",
+                "solution": [
+                    "<img src='logo.png' alt='logo'>",
+                    "<img src=\"logo.png\" alt=\"logo\">",
+                    "<img alt='logo' src='logo.png'>",
+                    "<img src='logo.png' alt=\"logo\">"
+                ],
+                "xp": 30
+            },
+            {
+                "id": "html-boss",
+                "title": "BOSS: The Architect's Gauntlet",
+                "isBoss": true,
+                "xp": 100,
+                "learningConcept": "Concept: A well-structured HTML document uses semantic tags to define its parts (like <header>, <footer>, <li>) and follows strict syntax rules for its elements.",
+                "stages": [
+                    {
+                        "description": "[STAGE 1/3] Your Task: A link (or 'anchor' tag) is broken. It's missing the 'href' attribute that tells it where to go. Fix the tag so it points to the homepage ('/').",
+                        "brokenCode": "<a>Home</a>\n<a href='/about'>About</a>",
+                        "solution": [
+                            "<a href='/'>Home</a>",
+                            "<a href=\"/\">Home</a>"
+                        ]
+                    },
+                    {
+                        "description": "[STAGE 2/3] Your Task: A list is structured incorrectly. Text inside an unordered list (<ul>) must be wrapped in list item (<li>) tags. Correct the line.",
+                        "brokenCode": "<ul>Home</ul>",
+                        "solution": [
+                            "<li>Home</li>",
+                            "<li> Home </li>"
+                        ]
+                    },
+                    {
+                        "description": "[STAGE 3/3] Your Task: The page's footer is using a generic <div> tag. For better structure and accessibility, it should use the semantic <footer> tag. Replace the div with the correct tag.",
+                        "brokenCode": "<div id='footer'>Copyright</div>",
+                        "solution": [
+                            "<footer id='footer'>Copyright</footer>",
+                            "<footer id=\"footer\">Copyright</footer>"
+                        ]
+                    }
+                ]
+            }
         ]
     },
     "CSS": {
         "displayName": "Module 2: CSS Policy Enforcement",
         "rankUnlocked": "logicWeaver",
         "challenges": [
-            { "id": "css-01", "title": "Firewall Alert: Unspecified Target", "learningConcept": "Concept: In CSS, to select and style all elements with a specific class, you must prefix the class name with a period (.).", "description": "Your Task: The style rule for 'error-text' isn't working because it's missing the period. Add the correct prefix to the selector.", "brokenCode": "error-text {\n  color: red;\n}", "solution": ".error-text", "xp": 40 },
-            { "id": "css-02", "title": "Security Breach: Unique Identifier", "learningConcept": "Concept: To select and style a single element with a unique ID, you must prefix the ID name with a hash symbol (#).", "description": "Your Task: The style for the 'main-nav' ID is not being applied. The selector is missing the hash symbol. Correct the selector.", "brokenCode": "main-nav {\n  background-color: #333;\n}", "solution": "#main-nav", "xp": 40 },
-            { "id": "css-03", "title": "Targeting Matrix: Gravitational Constant", "type": "multiple-choice", "learningConcept": "Concept: The 'text-align' property is used to control the horizontal alignment of text within an element.", "description": "Your Task: The text inside the h1 element is not centered. Choose the correct CSS property from the options below to center it.", "brokenCode": "h1 {\n  /* Which property goes here? */\n}", "options": [ "align-content: center;", "justify-content: center;", "text-align: center;", "margin: auto;" ], "solution": "text-align: center;", "xp": 50 },
-            { "id": "css-boss", "title": "BOSS: The Stylist's Challenge", "isBoss": true, "xp": 150, "learningConcept": "Concept: Mastering CSS involves knowing the right properties to control color, layout (like grid and flexbox), and alignment.", "stages": [
-                { "description": "[STAGE 1/3] Your Task: A '.warning' element is supposed to be red, but it's invisible. The 'color' property is set incorrectly. Change the value to 'red'.", "brokenCode": ".warning {\n  color: transparent;\n}", "solution": "color: red;" },
-                { "description": "[STAGE 2/3] Your Task: A layout container is meant to use the CSS Grid system, but it's not working. The 'display' property is wrong. Change it to 'grid'.", "brokenCode": ".grid-container {\n  display: block;\n}", "solution": "display: grid;" },
-                { "description": "[STAGE 3/3] Your Task: Items in a flexbox container need to be centered horizontally. 'align-items' handles vertical alignment. Use the correct property to center them along the main axis.", "brokenCode": ".flex-container {\n  display: flex;\n  align-items: center;\n}", "solution": "justify-content: center;" }
-            ]}
+            {
+                "id": "css-01",
+                "title": "Firewall Alert: Unspecified Target",
+                "learningConcept": "Concept: In CSS, to select and style all elements with a specific class, you must prefix the class name with a period (.).",
+                "description": "Your Task: The style rule for 'error-text' isn't working because it's missing the period. Add the correct prefix to the selector.",
+                "brokenCode": "error-text {\n  color: red;\n}",
+                "solution": [
+                    ".error-text",
+                    ".error-text "
+                ],
+                "xp": 40
+            },
+            {
+                "id": "css-02",
+                "title": "Security Breach: Unique Identifier",
+                "learningConcept": "Concept: To select and style a single element with a unique ID, you must prefix the ID name with a hash symbol (#).",
+                "description": "Your Task: The style for the 'main-nav' ID is not being applied. The selector is missing the hash symbol. Correct the selector.",
+                "brokenCode": "main-nav {\n  background-color: #333;\n}",
+                "solution": [
+                    "#main-nav",
+                    "#main-nav "
+                ],
+                "xp": 40
+            },
+            {
+                "id": "css-03",
+                "title": "Targeting Matrix: Gravitational Constant",
+                "type": "multiple-choice",
+                "learningConcept": "Concept: The 'text-align' property is used to control the horizontal alignment of text within an element.",
+                "description": "Your Task: The text inside the h1 element is not centered. Choose the correct CSS property from the options below to center it.",
+                "brokenCode": "h1 {\n  /* Which property goes here? */\n}",
+                "options": [
+                    "align-content: center;",
+                    "justify-content: center;",
+                    "text-align: center;",
+                    "margin: auto;"
+                ],
+                "solution": [
+                    "text-align: center;",
+                    "text-align:center;"
+                ],
+                "xp": 50
+            },
+            {
+                "id": "css-boss",
+                "title": "BOSS: The Stylist's Challenge",
+                "isBoss": true,
+                "xp": 150,
+                "learningConcept": "Concept: Mastering CSS involves knowing the right properties to control color, layout (like grid and flexbox), and alignment.",
+                "stages": [
+                    {
+                        "description": "[STAGE 1/3] Your Task: A '.warning' element is supposed to be red, but it's invisible. The 'color' property is set incorrectly. Change the value to 'red'.",
+                        "brokenCode": ".warning {\n  color: transparent;\n}",
+                        "solution": [
+                            "color: red;",
+                            "color:red;",
+                            "color : red;",
+                            "color :red;"
+                        ]
+                    },
+                    {
+                        "description": "[STAGE 2/3] Your Task: A layout container is meant to use the CSS Grid system, but it's not working. The 'display' property is wrong. Change it to 'grid'.",
+                        "brokenCode": ".grid-container {\n  display: block;\n}",
+                        "solution": [
+                            "display: grid;",
+                            "display:grid;",
+                            "display : grid;",
+                            "display :grid;"
+                        ]
+                    },
+                    {
+                        "description": "[STAGE 3/3] Your Task: Items in a flexbox container need to be centered horizontally. 'align-items' handles vertical alignment. Use the correct property to center them along the main axis.",
+                        "brokenCode": ".flex-container {\n  display: flex;\n  align-items: center;\n}",
+                        "solution": [
+                            "justify-content: center;",
+                            "justify-content:center;",
+                            "justify-content : center;",
+                            "justify-content :center;"
+                        ]
+                    }
+                ]
+            }
         ]
     },
     "JavaScript": {
         "displayName": "Module 3: JS Execution Logic",
         "rankUnlocked": "architectArcanist",
         "challenges": [
-            { "id": "js-01", "title": "Logic Bomb: Assignment vs. Comparison", "learningConcept": "Concept: In JavaScript, a single equals sign (=) assigns a value. To compare if two values are equal, you must use the triple equals sign (===).", "description": "Your Task: The 'if' statement is broken because it's using an assignment operator instead of a comparison operator. Correct the line to properly compare 'x' to 10.", "brokenCode": "if (x = 10)", "solution": "if (x === 10)", "xp": 70 },
-            { "id": "js-02", "title": "Subroutine Malfunction", "learningConcept": "Concept: To run, or 'call', a function in JavaScript, you must type its name followed by parentheses ().", "description": "Your Task: The code references the 'showWelcomeMessage' function, but doesn't actually run it. Add parentheses to the end of the line to call the function.", "brokenCode": "const user = 'Alex';\nshowWelcomeMessage;", "solution": "showWelcomeMessage();", "xp": 70 },
-            { "id": "js-boss", "title": "BOSS: The De-Bugger's Final Test", "isBoss": true, "xp": 200, "learningConcept": "Concept: Debugging JavaScript often involves fixing selectors to interact with HTML, ensuring functions return values, and correctly setting up event listeners.", "stages": [
-                { "description": "[STAGE 1/3] Your Task: The code is trying to select an HTML element with an ID of 'alert-banner', but the selector is wrong. Remember that ID selectors in JavaScript (like in CSS) need a '#' prefix.", "brokenCode": "document.querySelector('alert-banner');", "solution": "document.querySelector('#alert-banner');" },
-                { "description": "[STAGE 2/3] Your Task: The 'getUser' function is supposed to provide a username, but it doesn't return anything. Add the 'return' keyword to send the username value back.", "brokenCode": "function getUser() {\n  const username = 'Op_01';\n}", "solution": "return username;" },
-                { "description": "[STAGE 3/3] Your Task: An event listener is set up to run a 'handleClick' function when a button is clicked, but the syntax is incomplete. Pass the function name as the second argument to 'addEventListener'.", "brokenCode": "button.addEventListener('click');", "solution": "button.addEventListener('click', handleClick);" }
-            ]}
+            {
+                "id": "js-01",
+                "title": "Logic Bomb: Assignment vs. Comparison",
+                "learningConcept": "Concept: In JavaScript, a single equals sign (=) assigns a value. To compare if two values are equal, you must use the triple equals sign (===).",
+                "description": "Your Task: The 'if' statement is broken because it's using an assignment operator instead of a comparison operator. Correct the line to properly compare 'x' to 10.",
+                "brokenCode": "if (x = 10)",
+                "solution": [
+                    "if (x === 10)",
+                    "if(x===10)",
+                    "if (x===10)",
+                    "if(x === 10)"
+                ],
+                "xp": 70
+            },
+            {
+                "id": "js-02",
+                "title": "Subroutine Malfunction",
+                "learningConcept": "Concept: To run, or 'call', a function in JavaScript, you must type its name followed by parentheses ().",
+                "description": "Your Task: The code references the 'showWelcomeMessage' function, but doesn't actually run it. Add parentheses to the end of the line to call the function.",
+                "brokenCode": "const user = 'Alex';\nshowWelcomeMessage;",
+                "solution": [
+                    "showWelcomeMessage();",
+                    "showWelcomeMessage ( );",
+                    "showWelcomeMessage( );"
+                ],
+                "xp": 70
+            },
+            {
+                "id": "js-boss",
+                "title": "BOSS: The De-Bugger's Final Test",
+                "isBoss": true,
+                "xp": 200,
+                "learningConcept": "Concept: Debugging JavaScript often involves fixing selectors to interact with HTML, ensuring functions return values, and correctly setting up event listeners.",
+                "stages": [
+                    {
+                        "description": "[STAGE 1/3] Your Task: The code is trying to select an HTML element with an ID of 'alert-banner', but the selector is wrong. Remember that ID selectors in JavaScript (like in CSS) need a '#' prefix.",
+                        "brokenCode": "document.querySelector('alert-banner');",
+                        "solution": [
+                            "document.querySelector('#alert-banner');",
+                            "document.querySelector( '#alert-banner' );"
+                        ]
+                    },
+                    {
+                        "description": "[STAGE 2/3] Your Task: The 'getUser' function is supposed to provide a username, but it doesn't return anything. Add the 'return' keyword to send the username value back.",
+                        "brokenCode": "function getUser() {\n  const username = 'Op_01';\n}",
+                        "solution": [
+                            "return username;",
+                            "return username ;"
+                        ]
+                    },
+                    {
+                        "description": "[STAGE 3/3] Your Task: An event listener is set up to run a 'handleClick' function when a button is clicked, but the syntax is incomplete. Pass the function name as the second argument to 'addEventListener'.",
+                        "brokenCode": "button.addEventListener('click');",
+                        "solution": [
+                            "button.addEventListener('click', handleClick);",
+                            "button.addEventListener( 'click', handleClick );"
+                        ]
+                    }
+                ]
+            }
         ]
     }
 }

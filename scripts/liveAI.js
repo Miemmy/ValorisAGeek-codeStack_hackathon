@@ -34,10 +34,19 @@ export class LiveAI {
             }
 
             const data = await response.json();
-            return data.candidates[0].content.parts[0].text;
+            return data.candidates?.[0]?.content?.parts?.[0]?.text || "[AI ERROR]: No response from Gemini.";
         } catch (error) {
             console.error("Live AI Error:", error);
             return "[SYSTEM FAILURE]: AI uplink failed. Please check your network connection or API key configuration.";
         }
     }
 }
+
+// Usage example (to be removed in the actual module)
+(async () => {
+    const liveAI = new LiveAI();
+    const currentCode = `function add(a, b) { return a + b; }`;
+    const promptText = "What does this function do?";
+    const hint = await liveAI.getHint(currentCode, promptText);
+    console.log(hint);
+})();
