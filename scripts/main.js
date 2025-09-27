@@ -70,6 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('daily-challenge-button').addEventListener('click', () => this.startDailyChallenge());
             document.getElementById('submit-daily-solution-button').addEventListener('click', () => this.handleDailyChallengeSubmit());
             document.getElementById('close-daily-results-button').addEventListener('click', () => UI.hideDailyResultsModal());
+            document.getElementById('cancel-daily-challenge-button').addEventListener('click', () => {
+                UI.hideDailyChallengeModal();
+            });
 
             UI.askAIButton.addEventListener('click', () => { this.handleAIPrompt(); });
             UI.submitSolutionButton.addEventListener('click', () => { this.handleSubmitSolution(); });

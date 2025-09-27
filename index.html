@@ -90,17 +90,21 @@
     </div>
 
     <div id="daily-challenge-modal" class="modal-overlay hidden">
-        <div class="modal-container">
-            <h1 id="daily-challenge-title">Daily Anomaly Detected</h1>
-            <p id="daily-challenge-description">A random system glitch has been detected. Patch it as quickly as possible. Good luck, operative.</p>
-            <div id="daily-code-viewer">
-                <pre><code id="daily-code-block"></code></pre>
-            </div>
-            <div class="code-editor-look">
-                <textarea id="solution-input" placeholder="Type your corrected code here..."></textarea>
-            </div>
-            <button id="submit-daily-solution-button">Submit Patch</button>
+      <div class="modal-container daily-challenge-container">
+        <h2 id="daily-challenge-title">Daily Anomaly Detected</h2>
+        <div class="daily-challenge-meta">
+          <span id="daily-challenge-date"></span>
+          <span id="daily-challenge-xp"></span>
         </div>
+        <p id="daily-challenge-description"></p>
+        <pre id="daily-code-block"></pre>
+        <textarea id="solution-input" placeholder="Type your solution here..."></textarea>
+        <div class="daily-challenge-actions">
+          <button id="submit-daily-solution-button">Submit</button>
+          <button id="cancel-daily-challenge-button" class="secondary">Cancel</button>
+        </div>
+        <div id="daily-challenge-feedback"></div>
+      </div>
     </div>
 
     <div id="daily-results-modal" class="modal-overlay hidden">
